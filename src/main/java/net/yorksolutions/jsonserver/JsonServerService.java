@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
@@ -42,20 +45,49 @@ public class JsonServerService {
         return http;
     }
 
-    public Date DateTime(){
-        Date date = new Date();
+//    public Date DateTime(){
+//        Date date = new Date();
+//
+//        return date;
+//        }
+//
+//        //unable to pull correct date and time format including milliseconds
+//
+//    public LocalDateTime DateTime1(){
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+//        LocalDateTime now = LocalDateTime.now();
+//        return now;
+//    }
 
-        return date;
-        }
+    public HashMap newDate(){
+        HashMap newDate1 = new HashMap();
 
-        //unable to pull correct date and time format including milliseconds
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime timeNow = LocalTime.now();
 
-    public LocalDateTime DateTime1(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        return now;
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("/MM/dd/uuuu");
+        LocalDate dateNow = LocalDate.now();
+
+        long milli = Instant.now().toEpochMilli();
+
+        newDate1.put("time", timeNow);
+        newDate1.put("date", dateNow);
+        newDate1.put("milliseconds", milli);
+
+        return newDate1;
+
     }
 
+    public String arbAlert(){
+        this.ipAdd();
+        String alert = "alert('Your IP Address is: " + ipAdd() + "'')";
+        return alert;
     }
+
+
+
+    }
+
+
 
 
