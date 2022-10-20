@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +36,11 @@ public class JsonServerController {
     @GetMapping("date")
     public Date currentDate() {
         return this.jsonServerService.DateTime();
+    }
+
+    @GetMapping("date2")
+    public LocalDateTime currentDate2() {
+        return this.jsonServerService.DateTime1();
     }
 }
 

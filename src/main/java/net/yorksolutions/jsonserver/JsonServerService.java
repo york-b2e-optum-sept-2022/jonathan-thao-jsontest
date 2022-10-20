@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +49,12 @@ public class JsonServerService {
         }
 
         //unable to pull correct date and time format including milliseconds
+
+    public LocalDateTime DateTime1(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        return now;
+    }
 
     }
 
